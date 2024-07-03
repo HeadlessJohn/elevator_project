@@ -340,20 +340,20 @@ void thread4(void *argument)
   /* Infinite loop */
   for(;;)  {
     switch (state) {
-      case STATE_IDLE:    sprintf(temp, "  IDLE  ");     break;
-      case STATE_UP:      sprintf(temp, "   UP   ");     break;
-      case STATE_DOWN:    sprintf(temp, "  DOWN  ");     break;
-      case STATE_ARRIVED: sprintf(temp, "ARRIVED ");     break;
-      default:            sprintf(temp, "  IDLE  ");     break;
+      case STATE_IDLE:    sprintf((char*)temp, "  IDLE  ");     break;
+      case STATE_UP:      sprintf((char*)temp, "   UP   ");     break;
+      case STATE_DOWN:    sprintf((char*)temp, "  DOWN  ");     break;
+      case STATE_ARRIVED: sprintf((char*)temp, "ARRIVED ");     break;
+      default:            sprintf((char*)temp, "  IDLE  ");     break;
     }
     ssd1306_SetCursor(20, 0);
-    ssd1306_WriteString(temp, Font_11x18, White);
+    ssd1306_WriteString((char*)temp, Font_11x18, White);
     ssd1306_SetCursor(0, 30);
-    sprintf(temp, "Current Floor: %d", current_floor);
-    ssd1306_WriteString(temp, Font_7x10, White);
+    sprintf((char*)temp, "Current Floor: %d", current_floor);
+    ssd1306_WriteString((char*)temp, Font_7x10, White);
     ssd1306_SetCursor(0, 50);
-    sprintf(temp, "Target Floor: %d", target_floor);
-    ssd1306_WriteString(temp, Font_7x10, White);
+    sprintf((char*)temp, "Target Floor: %d", target_floor);
+    ssd1306_WriteString((char*)temp, Font_7x10, White);
     ssd1306_UpdateScreen();
     osDelay(200);
   }
